@@ -5,16 +5,19 @@ import Home from './components/main/Home';
 import Login from './components/main/Login';
 import User from './components/user';
 import Profile from './components/user/Profile';
+import { AppProvider } from './context/AppContext';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+      <AppProvider>
         <Routes>
             <Route path='main' element={<Main />} >
               <Route path='home' element={<Home />} /> 
               <Route path='login' element={<Login />} /> 
+              <Route path='SignUp' element={<Signup />} /> 
             </Route>
 
             <Route path='user' element={<User />} >
@@ -22,6 +25,7 @@ function App() {
             </Route>
             
         </Routes>
+        </AppProvider>
       </BrowserRouter>
     </>
   )
