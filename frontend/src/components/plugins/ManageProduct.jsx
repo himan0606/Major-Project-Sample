@@ -8,7 +8,8 @@ const ManageProduct = () => {
     <div>
         <form action="">
             <h3>Name</h3>
-            <input className='text-primary' type="text" name="" id="" />
+            <input className='text-primary
+            ' type="text" name="" id="" />
         </form>
     </div>
   )
