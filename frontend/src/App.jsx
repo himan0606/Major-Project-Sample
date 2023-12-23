@@ -24,7 +24,7 @@ function App() {
               <Route path='login' element={<Login />} /> 
               <Route path='signup' element={<Signup />} /> 
               <Route path='contact' element={<Contact />} /> 
-              <Route path='browserplugin' element={<BrowerPlugin />} />
+              <Route path='browseplugin' element={<BrowerPlugin />} />
                
 
             </Route>
