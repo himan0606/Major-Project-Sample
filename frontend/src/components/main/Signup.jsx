@@ -87,7 +87,7 @@ const SignUp = () => {
             <div className="form-body  ">
               <div className="formcontainer">
                 <form onSubmit={signUpform.handleSubmit} bg-secondary>
-                  <h2 className="main-heading">SignUp Here</h2>
+                  <h2 className="main-heading ">Sign Up </h2>
                   <label>
                     <h4>Full Name<span style={{ color: 'red' }}> <sup>*</sup></span></h4>
                   </label>

@@ -1,13 +1,10 @@
 import React from 'react'
 
-const paymentway = () => {
+const PaymentWay = () => {
   return (
     <div><>
     {/* Hello world */}
-    <div className="awesome" style={{ border: "1px solid red" }}>
-      <label htmlFor="name">Enter your name: </label>
-      <input type="text" id="name" />
-    </div>
+    
     <p />
     <div className="constant">
       <form action="">
@@ -84,4 +81,4 @@ const paymentway = () => {
   )
 }
 
-export default paymentway
+export default PaymentWay;

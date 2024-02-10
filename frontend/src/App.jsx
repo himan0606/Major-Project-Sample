@@ -11,6 +11,10 @@ import BrowerPlugin from './components/main/BrowerPlugin';
 import Contact from './components/main/Contact';
 import Plugins from './components/plugins';
 import ManageProduct from './components/plugins/ManageProduct';
+import PaymentWay from './components/user/paymentway';
+import Addproduct from './components/user/Addproduct';
+import Viewproduct from './components/user/Viewproduct';
+
 
 function App() {
 
@@ -31,6 +35,10 @@ function App() {
 
             <Route path='user' element={<User />} >
               <Route path='profile' element={<Profile />} />
+              <Route path='payment' element={<PaymentWay />} />
+              <Route path='addproduct' element={<Addproduct />} />
+              <Route path='viewproduct' element={<Viewproduct />} />
+
             </Route>
             
             <Route path='plugins' element={<Plugins />} >
