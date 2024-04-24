@@ -8,7 +8,7 @@ const mySchema = new Schema({
     rating: {type : Number, default: 0},
     image: String,
     price : Number,
-    createdAt: Date
+    createdAt: {type : Date, default: Date.now}
 });
 
 module.exports = model( 'product', mySchema );

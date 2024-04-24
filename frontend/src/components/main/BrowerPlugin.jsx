@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const BrowerPlugin = () => {
   return (
     <div>
-      <div className="container">
+      <div className="container hover">
         <div className="row gy-3 my-3">
           <div className="col-md-4">
             <div className="card">

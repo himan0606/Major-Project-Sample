@@ -1,25 +1,28 @@
+import { useFormik } from 'formik';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Addproduct = () => {
 
   const navigate = useNavigate();
 
   // initialize the formik
-  const signUpform = useFormik({
+  const productForm = useFormik({
     initialValues: {
-       productname: '',
       brand: '',
-      Productdescription: ''
+      model: '',
+      colors: '',
+      description: '',
+      image: '',
+      price: 0
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       setSubmitting(true);
-      setTimeout(() => {
-        console.log(values);
-        setSubmitting(false);
-      }, 3000);
-
+      console.log(values);
+      // return;
       // send the data to the server
-      const res = await fetch('http://localhost:5000/user/add', {
+      const res = await fetch('http://localhost:5000/product/add', {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
@@ -32,13 +35,14 @@ const Addproduct = () => {
         Swal.fire({
           icon: 'success',
           title: 'Nice',
-          text: 'You have signed up successfully'
+          text: 'Product Added successfully'
         })
-          .then((result) => {
-            navigate('/login');
-
+          res.json().then((data) => {
+            setSubmitting(false);
+            // resetForm();
+            // navigate('/login');
           }).catch((err) => {
-
+            console.log(err);
           });
       } else {
         Swal.fire({
@@ -61,70 +65,59 @@ const Addproduct = () => {
     const fd = new FormData();
     fd.append('myfile', file);
 
-    const res = await fetch('/http://localhost:5000/utils/uploadfile', {
+    const res = await fetch('http://localhost:5000/util/uploadfile', {
       method: 'POST',
       body: fd
     });
 
     console.log(res.status);
-
+    if(res.status === 200){
+      productForm.values.image = file.name;
+    }
   }
-
-
 
 
   return (
     <div><>
-    *
-    <p />
-    <div className="addpro">
-      <h2>Add Product</h2>
-      <form action="#" method="POST">
-        <label htmlFor="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required="" />
+      *
+      <p />
+      <div className="addpro">
+        <h2>Add Product</h2>
+        <form onSubmit={productForm.handleSubmit}>
+        
+          <label htmlFor="brand">Brand:</label>
+          <input type="text" id="brand" onChange={productForm.handleChange} value={productForm.values.brand} />
+          <label htmlFor="model">model:</label>
+          <input type="text" id="model" onChange={productForm.handleChange} value={productForm.values.model} required="" />
 
-        <label htmlFor="productImage">Brand:</label>
-        <input type="text" id="productColor" name="productModel" required="" />
+          <label htmlFor="description">Product Description:</label>
+          <textarea
+            id="description"
+            onChange={productForm.handleChange}
+            value={productForm.values.description}
+            rows={4}
+          />
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            onChange={productForm.handleChange}
+            value={productForm.values.price}
+            step="1"
+          />
 
-        <label htmlFor="productDescription">Product Description:</label>
-        <textarea
-          id="productDescription"
-          name="productDescription"
-          rows={4}
-          required=""
-          defaultValue={""}
-        />
-        <label htmlFor="productPrice">Price:</label>
-        <input
-          type="number"
-          id="productPrice"
-          name="productPrice"
-          step="0.01"
-          required=""
-        />
-        <label htmlFor="productImage">model:</label>
-        <input type="text" id="productModel" name="productModel" required="" />
+          <label htmlFor="colors">Color:</label>
+          <input type="text" id="colors" onChange={productForm.handleChange} value={productForm.values.colors}  />
 
-        <label htmlFor="productImage">Color:</label>
-        <input type="text" id="productColor" name="productModel" required="" />
+          <label htmlFor="uploadimage">Image:</label>
+          <input type="file" id="uploadimage" onChange={uploadfile} className=' md-4 bg-warning' />
 
-        <label htmlFor="productPrice">Rating:</label>
-        <input
-          type="number"
-          id="productPrice"
-          name="productPrice"
-          step="1-10"
-          required=""
-        />
-        <label htmlFor="productImage">Image:</label>
-        <input type="file" id="productColor" name="productModel" required="" className=' md-4 bg-warning' />
-
-        <input type="submit" defaultValue="Add Product" />
-      </form>
+          <input type="submit" className='mt-4' defaultValue="Add Product" />
+        </form>
+      </div>
+      <p />
+    </>
     </div>
-    <p />
-  </>
-  </div>
   )
 }
 
