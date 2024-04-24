@@ -1,9 +1,9 @@
 import React from 'react'
 
-const productBrowser = () => {
+const ProductBrowser = () => {
   return (
     <div>productBrowser</div>
   )
 }
 
-export default productBrowser
+export default ProductBrowser

@@ -14,6 +14,7 @@ import ManageProduct from './components/plugins/ManageProduct';
 import PaymentWay from './components/user/paymentway';
 import Addproduct from './components/user/Addproduct';
 import Viewproduct from './components/user/Viewproduct';
+import ProductBrowser from './components/user/productBrowser';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path='payment' element={<PaymentWay />} />
               <Route path='addproduct' element={<Addproduct />} />
               <Route path='viewproduct' element={<Viewproduct />} />
+              <Route path='Productbrower' element={<ProductBrowser />} />
 
             </Route>
             

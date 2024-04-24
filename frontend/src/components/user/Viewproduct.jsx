@@ -21,6 +21,7 @@ const Viewproduct = () => {
           <h3 className="text-danger">Model</h3>
           <h3 className="text-primary">Price</h3>
           <h3 className="text-primary">Color</h3>
+          <h3 className="text-primary">Rating</h3>
           <hr />
           <div className="form-group">
             <label htmlFor="quantity">Quantity:</label>

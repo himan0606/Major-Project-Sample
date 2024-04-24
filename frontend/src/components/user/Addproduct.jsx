@@ -1,6 +1,78 @@
 import React from 'react'
 
 const Addproduct = () => {
+
+  const navigate = useNavigate();
+
+  // initialize the formik
+  const signUpform = useFormik({
+    initialValues: {
+       productname: '',
+      brand: '',
+      Productdescription: ''
+    },
+    onSubmit: async (values, { setSubmitting }) => {
+      setSubmitting(true);
+      setTimeout(() => {
+        console.log(values);
+        setSubmitting(false);
+      }, 3000);
+
+      // send the data to the server
+      const res = await fetch('http://localhost:5000/user/add', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Nice',
+          text: 'You have signed up successfully'
+        })
+          .then((result) => {
+            navigate('/login');
+
+          }).catch((err) => {
+
+          });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'oops!!',
+          text: 'Something went wrong'
+        })
+      }
+
+    },
+    // validationSchema: SignupSchema,
+  });
+
+  const uploadfile = async (e) => {
+    if (!e.target.files) return;
+
+    const file = e.target.files[0];
+    console.log(file.name);
+
+    const fd = new FormData();
+    fd.append('myfile', file);
+
+    const res = await fetch('/http://localhost:5000/utils/uploadfile', {
+      method: 'POST',
+      body: fd
+    });
+
+    console.log(res.status);
+
+  }
+
+
+
+
   return (
     <div><>
     *

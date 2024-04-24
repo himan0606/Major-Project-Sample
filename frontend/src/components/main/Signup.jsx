@@ -103,8 +103,8 @@ const SignUp = () => {
                     <h4>Password <span style={{ color: 'red' }}> <sup>*</sup></span></h4>
                   </label>
                   <input type="password" name='password' className="form-control md-4" placeholder="Your Password" onChange={signUpform.handleChange} value={signUpform.values.password} />
-                  <input type="file" onChange={uploadfile}  className=' md-4 bg-warning'/>
-                  
+                  <input type="file" onChange={uploadfile} className=' md-4 bg-warning' />
+
                   <p>
                     <input type="checkbox" required /> I'd like to receive more information about
                     company. I understand and agree to the
